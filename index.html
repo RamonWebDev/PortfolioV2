@@ -1,0 +1,163 @@
+<?php
+$sucess = "";
+if(isset($_POST['Submit'])){//if submit button is clicked
+// get posted data into local variables
+$EmailFrom = "";//your email
+$EmailTo = "";//receiving email
+$Subject = "contact form";
+$name = Trim(stripslashes($_POST['name']));  
+$email = Trim(stripslashes($_POST['email'])); 
+$comment = Trim(stripslashes($_POST['comment'])); 
+// prepare email body text
+$body = "";
+$body .= "name: ";
+$body .= $name;
+$body .= "\n";
+$body .= "email: ";
+$body .= $email;
+$body .= "\n";
+$body .= "comment: ";
+$body .= $comment;
+$body .= "\n";
+$headers = 'FROM: "'. $name . '" <' . $EmailFrom . '>' . "\r\n";
+// send email 
+if(!mail($EmailTo, $Subject, $body, $headers)){ 
+ die ("Sending Email Failed, Please Contact Site Admin! "); 
+}else{ 
+    $success = 'Message sent!';
+}//end if sent 
+}//end if submit
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--Style CSS-->
+    <link rel="stylesheet" href="style.css">
+    <!--Jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   <!--BootstrapJS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/587dcd7da8.js" crossorigin="anonymous"></script>
+    <!--JavaScript-->
+    <script src="app.js"></script>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <input type="submit" name="home" value="Home" class="btn bluebg nav-link" onclick="slidetransition('home')">
+                  <input type="submit" name="proj" value="Projects" class="btn bluebg nav-link" onclick="slidetransition('proj')">
+                  <input type="submit" name="contact" value="Contact Me" class="btn bluebg nav-link" onclick="slidetransition('contact')">
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <div class="container-fluid">
+            <div class="main visChk" id="home" style="display: inline;">
+                <div class="name">
+                <h1>Hello, I Am Ramon Morales</h1>
+            </div>
+                <div class="subtitle">
+                    <h2>Web Developer</h2>
+                </div>
+                <div class="subtitle">
+                    <a href="https://github.com/RamonWebDev" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a> &nbsp;
+                    <a href="https://www.linkedin.com/in/ramon-morales-6054b1213/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a> &nbsp;
+                </div>
+            </div><!--end main-->
+
+            <div class="row">
+              <div class="projects visChk" id="proj" style="display: none;">
+                <div class="lang">
+                  <div class="langTitle">
+                  <h2>Programming Skills</h2>
+                  </div>
+                  <div class="langList">
+                    <i class="fa-brands fa-html5"></i> &nbsp; HTML &nbsp;&nbsp;
+                    <i class="fa-brands fa-js-square"></i> &nbsp; JavaScript &nbsp;&nbsp;
+                    <i class="fa-brands fa-css3-alt"></i> &nbsp; CSS &nbsp;&nbsp;
+                    <i class="fa-brands fa-php"></i> &nbsp; PHP &nbsp;&nbsp;
+                    <i class="fa-solid fa-database"></i> &nbsp; MySQL &nbsp;&nbsp;
+                  </div>
+              </div>
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-4">
+                  <div class="card">
+                    <h5 class="card-header">Weather App</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">JavaScript & API</h5>
+                      <p class="card-text">This weather app uses JavaScript and 2 different Rest APIs to get the weather information from any city you wish. I built this app to brush up on my JavaScript skills and learn more about it.</p>
+                      <a href="https://ramonmorales831.com/Temp/index.html" class="btn btn-primary">Visit Site</a>  &nbsp;&nbsp;
+                      <a href="https://github.com/RamonWebDev/temp/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a> &nbsp;
+                    </div>
+                  </div><!--end card-->
+                </div><!--end col-->  
+                <div class="col-1"></div>
+                <div class="col-4">
+                <div class="card">
+                  <h5 class="card-header">Internship App</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Symfony Framework</h5>
+                    <p class="card-text">I helped create an app for Gearsite. I helped create the part of the app that allowed users to enter URLs, display them, and keep track of how many times they were clicked.(Only Screenshot)</p>
+                    <a href="image/gearsuite.PNG" class="btn btn-primary">Visit Site</a> &nbsp;
+                  </div>
+                </div><!--end card-->  
+              </div><!--end col--> 
+                </div><!--End row-->
+
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-4">
+                    <div class="card proj3">
+                      <h5 class="card-header">First PHP App</h5>
+                      <div class="card-body">
+                        <h5 class="card-title">PHP</h5>
+                        <p class="card-text">This was the first big PHP website I made during my time at school. It isn't complete, but I plan on going back to it one day to either finish it or redo the entire site.</p>
+                        <a href="https://www.ramonmorales831.com/PHP/OW/index.php" class="btn btn-primary">Visit Site</a> &nbsp;
+                      </div>
+                    </div><!--end card-->  
+                  </div><!--end col--> 
+                </div><!--End row-->
+
+
+            </div><!--End Projects-->
+            </div><!--End row-->
+
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4">
+              <div class="contact visChk" id="contact" style="display: none;">
+                  <div class="email">
+                    <form method='post'>
+                      <label for='name'>Name</label>
+                      <input class="form-control form-control-lg" placeholder="Name" id='name' name='name' type='text'/><br>
+                      <label for='email'>Email</label>
+                      <input class="form-control form-control-lg" id='email' placeholder="JohnSmith123@AOL.com" name='email' type='email'/><br>
+                      <label for='comment'>Message</label>
+                      <textarea class="form-control" id='comment' placeholder="Enter Your Message" name='comment' rows='3' ></textarea><br>
+                      <input type="submit" name="Submit" id="Submit" value="Enter"/>
+                      </form>
+                  </div>
+              </div>
+            </div><!--End col-->
+            <div class="col-4"></div>
+            </div><!--End row-->
+        </div><!--Container end-->   
+</body>
+</html>
